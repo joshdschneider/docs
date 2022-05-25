@@ -3,3 +3,9 @@
 # [docs](https://formation.fyi/)
 
 This is the repository for Formation's static landing page and documentation website. Bootstrapped with [create-react-app](https://create-react-app.dev/). For the official Formation repo, [click here](https://github.com/joshdschneider/formation).
+
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/joshdschneider/docs/blob/main/LICENSE)
+
+[**Visit the website ▸**](http://formation.fyi/)
+
+[**Formation official repo ▸**](http://formation.fyi/docs/)
