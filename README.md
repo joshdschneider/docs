@@ -2,4 +2,4 @@
 
 # [docs](https://formation.fyi/)
 
-This is the repository for Formation's static landing page and documentation website. For the official Formation repo, [click here](https://github.com/joshdschneider/formation).
+This is the repository for Formation's static landing page and documentation website. Bootstrapped with [create-react-app](https://create-react-app.dev/). For the official Formation repo, [click here](https://github.com/joshdschneider/formation).
