@@ -25,8 +25,15 @@ function GettingStarted() {
       <Section>
         <h3>Installation</h3>
         <p>
-          Add Formation to your application with <span className='bold'>npm</span> using the command
-          below:
+          {'Add Formation to your application with '}
+          <a
+            href='http://www.npmjs.com/package/@joshdschneider/formation'
+            target='_blank'
+            rel='noreferrer'
+          >
+            npm
+          </a>
+          {' using the command below:'}
         </p>
         <div className='code-block'>
           <span className='cli'>{installExample}</span>

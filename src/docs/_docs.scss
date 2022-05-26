@@ -37,13 +37,13 @@ $screen-max-width: 920px;
   align-items: flex-start;
   max-width: 1080px;
   height: calc(100vh - 71px);
-  padding: 0 10px;
+  padding: 71px 10px 0 10px;
   margin: 0 auto;
   transition: 0.2s;
 
   @media only screen and (max-width: $screen-max-width) {
     height: auto;
-    padding: 0;
+    padding: 65px 0 0 0;
   }
 
   .docs--nav {
@@ -56,7 +56,13 @@ $screen-max-width: 920px;
     margin: 0;
     overflow: hidden;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     transition: 0.2s;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     @include themify($themes) {
       background: themed('background--nav');
@@ -77,6 +83,8 @@ $screen-max-width: 920px;
     margin: 0;
     overflow: hidden;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     transition: 0.2s;
 
     @include themify($themes) {
@@ -94,6 +102,10 @@ $screen-max-width: 920px;
       @include themify($themes) {
         border-left: none;
       }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }
@@ -361,7 +373,7 @@ $screen-max-width: 920px;
 }
 
 .select-container {
-  width: 100%;
+  width: 100% !important;
 }
 
 .docs--props {
@@ -445,6 +457,16 @@ $screen-max-width: 920px;
     display: block;
     line-height: 1.6;
     padding: 2px 0;
+  }
+}
+
+.label {
+  &--flex {
+    display: flex;
+  }
+
+  &--block {
+    display: block;
   }
 }
 
@@ -706,6 +728,10 @@ $screen-max-width: 920px;
 .form--demo {
   @media only screen and (max-width: $screen-max-width) {
     margin: 20px;
+
+    .input-container {
+      width: 100% !important;
+    }
   }
 
   input {

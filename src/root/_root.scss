@@ -4,6 +4,7 @@ $themes: (
   light: (
     text-color: $black,
     text-color--muted: $dark-gray4,
+    background: $white,
     background--muted: $light-gray5,
     icon-background:
       radial-gradient(
@@ -21,6 +22,7 @@ $themes: (
   ),
   dark: (
     text-color: $white,
+    background: $black,
     text-color--muted: $light-gray1,
     background--muted: $dark-gray1,
     icon-background:
@@ -40,6 +42,15 @@ $themes: (
 );
 
 $screen-max-width: 920px;
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 body {
   margin: 0;
@@ -68,14 +79,20 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 20px);
   padding: 10px;
   margin: 0;
+  z-index: 10;
 
   @include themify($themes) {
+    background: themed('background');
     border-bottom: 1px solid themed('border-color');
   }
 
   @media only screen and (max-width: $screen-max-width) {
+    width: calc(100% - 4px);
     padding: 7px 2px;
   }
 
@@ -303,15 +320,18 @@ span {
 
 .hero {
   display: block;
-  margin: 20px;
+  position: relative;
+  margin: 71px 20px 20px 20px;
   padding: 14vh 0;
 
   @media only screen and (max-width: $screen-max-width) {
+    margin: 65px 20px 20px 20px;
     padding: 12vh 0;
   }
 
   h1 {
     display: block;
+    position: inherit;
     margin: 0 auto;
     padding: 10px 0;
     font-size: 48px;
@@ -326,6 +346,7 @@ span {
 
   p {
     display: block;
+    position: inherit;
     max-width: 525px;
     margin: 0 auto;
     padding: 0px 0 10px 0;
@@ -345,6 +366,7 @@ span {
 
   .hero--buttons {
     display: flex;
+    position: inherit;
     justify-content: center;
     align-items: center;
     margin: 5px 0;
@@ -425,27 +447,152 @@ span {
   }
 }
 
+.demo--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 3em 0;
+  background: #f8f8f8;
+  background-color: #fff;
+  background-size: 0.9rem 0.9rem;
+  background-position: center;
+  overflow: hidden;
+
+  @include themify($themes) {
+    background-color: themed('background');
+    border-top: 1px solid themed('border-color');
+    border-bottom: 1px solid themed('border-color');
+    background-image: linear-gradient(themed('background--muted') 1px, transparent 1px),
+      linear-gradient(90deg, themed('background--muted') 1px, transparent 1px);
+    box-shadow: inset 0px 0px 15px 6px themed('background--muted');
+  }
+
+  @media only screen and (max-width: 1000px) {
+    padding: 0;
+  }
+}
+
+.demo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    padding: 2em;
+  }
+
+  .demo--col {
+    display: block;
+    padding: 12px;
+
+    &:first-child {
+      .demo--row {
+        justify-content: flex-end;
+
+        @media only screen and (max-width: 1000px) {
+          justify-content: flex-start;
+        }
+      }
+    }
+
+    &:last-child {
+      .demo--row {
+        justify-content: flex-start;
+      }
+    }
+
+    .demo--row {
+      display: flex;
+      align-items: center;
+
+      .demo--element {
+        display: block;
+        padding: 25px;
+
+        @media only screen and (max-width: 1000px) {
+          padding: 15px;
+        }
+      }
+
+      .demo--popover {
+        display: block;
+        position: relative;
+        padding: 25px 75px 155px 75px;
+
+        .popover--fake {
+          position: absolute;
+          inset: 0px auto auto 0px;
+          margin: 0px;
+          top: 70px;
+          left: 20px;
+          right: 20px;
+          z-index: 0;
+
+          #arrow {
+            position: absolute;
+            left: 0px;
+            transform: translate3d(123.5px, 0px, 0px);
+          }
+
+          .popover--content {
+            max-width: 225px;
+            text-align: left;
+
+            p {
+              padding: 0 0 10px 0;
+            }
+          }
+        }
+      }
+
+      .card {
+        margin: 25px;
+
+        @media only screen and (max-width: 1000px) {
+          margin: 15px;
+        }
+      }
+
+      .demo--radio-group {
+        display: block;
+        text-align: left;
+
+        .demo--radio {
+          padding: 10px;
+        }
+      }
+
+      .demo--select {
+        width: 240px;
+      }
+    }
+  }
+}
+
 .features--container {
   display: block;
-  padding: 20px;
+  padding: 8em 20px 20px 20px;
   margin: 0 auto;
   max-width: 1080px;
 
   @media only screen and (max-width: $screen-max-width) {
+    padding: 5em 20px 20px 20px;
     max-width: 500px;
-    padding: 0 20px;
   }
 
   .features {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
-
-    @include themify($themes) {
-      background: themed('background--muted');
-      border: 1px solid themed('border-color');
-    }
 
     @media only screen and (max-width: $screen-max-width) {
       display: block;
@@ -454,43 +601,51 @@ span {
     .feature {
       display: block;
       text-align: left;
-      padding: 40px 30px;
+      padding: 0px;
       width: 33%;
+      margin: 20px;
 
       @include themify($themes) {
-        border-left: 1px solid themed('border-color');
-      }
-
-      &:first-child {
-        border-left: none;
+        border-left: 1px dashed themed('border-color');
       }
 
       @media only screen and (max-width: $screen-max-width) {
         width: auto;
-        padding: 30px 20px;
-
-        @include themify($themes) {
-          border-left: none;
-          border-bottom: 1px solid themed('border-color');
-        }
-
-        &:last-child {
-          border-bottom: none;
-        }
+        border-left: none;
+        margin: 0px;
       }
 
       h5 {
         font-size: 18px;
-        padding-bottom: 8px;
+        padding-left: 20px;
+        margin-left: -1px;
+
+        @include themify($themes) {
+          border-left: 1px solid themed('text-color');
+        }
       }
 
       p {
         font-size: 16px;
         font-weight: 500;
         line-height: 1.6;
+        padding-left: 20px;
+        padding-top: 8px;
 
         @include themify($themes) {
           color: themed('text-color--muted');
+        }
+
+        @media only screen and (max-width: $screen-max-width) {
+          padding-bottom: 40px;
+        }
+      }
+
+      &:last-child {
+        p {
+          @media only screen and (max-width: $screen-max-width) {
+            padding-bottom: 0;
+          }
         }
       }
     }
@@ -528,4 +683,8 @@ span {
       }
     }
   }
+}
+
+.scroll-lock {
+  overflow-y: hidden;
 }

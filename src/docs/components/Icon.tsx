@@ -19,7 +19,7 @@ import {
 function IconDocs() {
   const [icon, setIcon] = useState<string>('style');
   const [intent, setIntent] = useState<Intent>('default');
-  const [size, setSize] = useState<Size>('regular');
+  const [size, setSize] = useState<Size>('large');
   const [query, setQuery] = useState<string>('');
   const [iconList, setIconList] = useState<IconData[]>(Icons);
 

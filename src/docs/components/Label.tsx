@@ -67,7 +67,7 @@ function LabelDocs() {
       <Section>
         <div className='docs--showcase'>
           <Example>
-            <div>
+            <div className={`label--${inline ? 'flex' : 'block'}`}>
               <Label for='hello_world' inline={inline} size={size}>
                 Name
               </Label>

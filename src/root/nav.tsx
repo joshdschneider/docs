@@ -11,6 +11,14 @@ type NavProps = {
 function Nav({ theme, toggleTheme }: NavProps) {
   const [isOpen, setOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('scroll-lock');
+    } else {
+      document.body.classList.remove('scroll-lock');
+    }
+  }, [isOpen]);
+
   return (
     <div className='nav--main'>
       <div className='nav--container'>
@@ -22,10 +30,14 @@ function Nav({ theme, toggleTheme }: NavProps) {
         </div>
         <div className='nav--links'>
           <Link to='/docs'>Docs</Link>
-          <a href='http://github.com/joshdschneider' target='_blank' rel='noreferrer'>
+          <a href='http://github.com/joshdschneider/formation' target='_blank' rel='noreferrer'>
             Github
           </a>
-          <a href='http://www.npmjs.com/' target='_blank' rel='noreferrer'>
+          <a
+            href='http://www.npmjs.com/package/@joshdschneider/formation'
+            target='_blank'
+            rel='noreferrer'
+          >
             npm
           </a>
           <button className='nav--theme' onClick={() => toggleTheme()}>
@@ -78,11 +90,15 @@ function MobileNav({ isOpen, onClose, theme, toggleTheme }: MobileNavProps) {
           <Icon icon='style' />
           <span>Docs</span>
         </Link>
-        <a href='http://github.com/joshdschneider' target='_blank' rel='noreferrer'>
+        <a href='http://github.com/joshdschneider/formation' target='_blank' rel='noreferrer'>
           <Icon icon='style' />
           <span>Github</span>
         </a>
-        <a href='http://www.npmjs.com/' target='_blank' rel='noreferrer'>
+        <a
+          href='http://www.npmjs.com/package/@joshdschneider/formation'
+          target='_blank'
+          rel='noreferrer'
+        >
           <Icon icon='style' />
           <span>npm</span>
         </a>
