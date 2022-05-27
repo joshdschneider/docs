@@ -29,7 +29,6 @@ import Tooltip from './components/Tooltip';
 import Contact from './resources/Contact';
 import Troubleshooting from './resources/Troubleshooting';
 import NotFound from './overview/NotFound';
-import ScrollToTop from './utils/ScrollToTop';
 
 function DocsRoutes() {
   return (
@@ -66,7 +65,6 @@ function DocsRoutes() {
         <Route path='/troubleshooting' element={<Troubleshooting />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
-      <ScrollToTop />
     </div>
   );
 }

@@ -11,12 +11,17 @@ import {
   Switch,
   Tooltip,
 } from '@joshdschneider/formation';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
-function Home() {
+type HomeProps = {
+  toggleTheme: () => void;
+};
+
+function Home({ toggleTheme }: HomeProps) {
   return (
     <>
       <Hero />
+      <ThemeToggle toggleTheme={toggleTheme} />
       <Demo />
       <Features />
       <Footer />
@@ -48,6 +53,43 @@ function Hero() {
           <span>View on Github →</span>
         </a>
       </div>
+    </div>
+  );
+}
+
+function ThemeToggle({ toggleTheme }: HomeProps) {
+  const [checked, setChecked] = useState<boolean>(() => {
+    return document.body.classList.contains('theme-dark');
+  });
+
+  function handleChange() {
+    setChecked(!checked);
+    toggleTheme();
+  }
+
+  function toggleLight() {
+    if (checked) {
+      setChecked(false);
+      toggleTheme();
+    }
+  }
+
+  function toggleDark() {
+    if (!checked) {
+      setChecked(true);
+      toggleTheme();
+    }
+  }
+
+  return (
+    <div className='theme-toggle'>
+      <button onClick={() => toggleLight()}>
+        <Icon icon='style' />
+      </button>
+      <Switch checked={checked} onChange={handleChange} className='demo--switch' />
+      <button onClick={() => toggleDark()}>
+        <Icon icon='style' />
+      </button>
     </div>
   );
 }
@@ -84,7 +126,7 @@ function Demo() {
     },
   ];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let demo = document.querySelector('.demo');
     let scrollWidth = demo?.scrollWidth;
     let clientWidth = document.body.clientWidth;
@@ -219,7 +261,7 @@ function Demo() {
             </div>
           </div>
           <div className='demo--row'>
-            <Card style={{ width: '300px' }} interactive>
+            <Card className='demo--card' interactive>
               <h3 style={{ fontSize: '18px', padding: 0 }}>Analytical applications</h3>
               <p style={{ padding: '10px 0 13px 0' }}>
                 Good user interfaces that enable people to interact smoothly with data.

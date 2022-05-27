@@ -9,7 +9,7 @@ function GettingStarted() {
     `import { Button } from '@joshdschnneider/formation';`,
     ` `,
     `function App() {`,
-    `  return <Button intent="success">Hello World</Button>;`,
+    `  return <Button intent='success'>Hello World</Button>;`,
     `} `,
   ];
 

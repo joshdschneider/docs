@@ -84,6 +84,7 @@ span {
   width: calc(100% - 20px);
   padding: 10px;
   margin: 0;
+  transition: 0.1s;
   z-index: 10;
 
   @include themify($themes) {
@@ -447,18 +448,21 @@ span {
   }
 }
 
+$demo-break: 1000px;
+
 .demo--container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: auto;
-  padding: 3em 0;
+  padding: 40px 0;
   background: #f8f8f8;
   background-color: #fff;
   background-size: 0.9rem 0.9rem;
   background-position: center;
   overflow: hidden;
+  transition: 0.1s;
 
   @include themify($themes) {
     background-color: themed('background');
@@ -466,10 +470,11 @@ span {
     border-bottom: 1px solid themed('border-color');
     background-image: linear-gradient(themed('background--muted') 1px, transparent 1px),
       linear-gradient(90deg, themed('background--muted') 1px, transparent 1px);
-    box-shadow: inset 0px 0px 15px 6px themed('background--muted');
+    box-shadow: inset 0px 15px 20px -15px themed('background--muted'),
+      inset -5px -15px 20px -15px themed('background--muted');
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: $demo-break) {
     padding: 0;
   }
 }
@@ -486,8 +491,8 @@ span {
     display: none;
   }
 
-  @media only screen and (max-width: 1000px) {
-    padding: 2em;
+  @media only screen and (max-width: $demo-break) {
+    padding: 1.5em;
   }
 
   .demo--col {
@@ -498,7 +503,7 @@ span {
       .demo--row {
         justify-content: flex-end;
 
-        @media only screen and (max-width: 1000px) {
+        @media only screen and (max-width: $demo-break) {
           justify-content: flex-start;
         }
       }
@@ -518,7 +523,7 @@ span {
         display: block;
         padding: 25px;
 
-        @media only screen and (max-width: 1000px) {
+        @media only screen and (max-width: $demo-break) {
           padding: 15px;
         }
       }
@@ -554,10 +559,12 @@ span {
         }
       }
 
-      .card {
+      .demo--card {
+        width: 337px;
         margin: 25px;
 
-        @media only screen and (max-width: 1000px) {
+        @media only screen and (max-width: $demo-break) {
+          width: 317px;
           margin: 15px;
         }
       }
@@ -575,6 +582,31 @@ span {
         width: 240px;
       }
     }
+  }
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .demo--switch {
+    padding-left: 30px;
+    margin: 15px;
   }
 }
 

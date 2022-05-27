@@ -25,7 +25,7 @@ function Root() {
   return (
     <ThemeProvider theme={theme}>
       <Nav theme={theme} toggleTheme={toggleTheme} />
-      <RootRoutes />
+      <RootRoutes toggleTheme={toggleTheme} />
     </ThemeProvider>
   );
 }

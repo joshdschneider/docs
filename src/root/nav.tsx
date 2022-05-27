@@ -12,10 +12,12 @@ function Nav({ theme, toggleTheme }: NavProps) {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    const html = document.querySelector('html');
+
     if (isOpen) {
-      document.body.classList.add('scroll-lock');
+      html?.classList.add('scroll-lock');
     } else {
-      document.body.classList.remove('scroll-lock');
+      html?.classList.remove('scroll-lock');
     }
   }, [isOpen]);
 
@@ -105,6 +107,7 @@ function MobileNav({ isOpen, onClose, theme, toggleTheme }: MobileNavProps) {
       </div>
     );
   }
+
   const clickListener = useCallback(
     (e: MouseEvent) => {
       let el = e.target as HTMLElement;

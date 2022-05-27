@@ -285,7 +285,7 @@ $screen-max-width: 920px;
     border: 1px solid themed('border-color');
     background-image: linear-gradient(themed('background--muted') 1px, transparent 1px),
       linear-gradient(90deg, themed('background--muted') 1px, transparent 1px);
-    box-shadow: inset 0px 0px 15px 6px themed('background--muted');
+    box-shadow: inset 0px 0px 15px 2px themed('background--muted');
   }
 
   @media only screen and (max-width: $screen-max-width) {
