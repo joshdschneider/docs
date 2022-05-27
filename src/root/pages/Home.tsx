@@ -11,7 +11,7 @@ import {
   Switch,
   Tooltip,
 } from '@joshdschneider/formation';
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 
 type HomeProps = {
   toggleTheme: () => void;
@@ -59,7 +59,9 @@ function Hero() {
 
 function ThemeToggle({ toggleTheme }: HomeProps) {
   const [checked, setChecked] = useState<boolean>(() => {
-    return document.body.classList.contains('theme-dark');
+    let ls = localStorage.getItem('formation_theme');
+    if (!!ls && ls === 'dark') return true;
+    return false;
   });
 
   function handleChange() {
@@ -95,7 +97,7 @@ function ThemeToggle({ toggleTheme }: HomeProps) {
 }
 
 function Demo() {
-  const [radio, setRadio] = useState<string>('Best');
+  const [radio, setRadio] = useState<string>('TypeScript');
   const [value, setValue] = useState<string>('red');
   const [on, setOn] = useState<boolean>(true);
   const [checked, setChecked] = useState<boolean>(true);
@@ -103,48 +105,61 @@ function Demo() {
   const navigate = useNavigate();
 
   const exampleOptionsGroup = [
-    {
-      label: 'Colors',
-      options: [
-        { label: 'Red', value: 'red' },
-        { label: 'Orange', value: 'orange' },
-        { label: 'Yellow', value: 'yellow' },
-        { label: 'Green', value: 'green' },
-        { label: 'Blue', value: 'blue' },
-        { label: 'Indigo', value: 'indigo' },
-        { label: 'Violet', value: 'violet' },
-      ],
-    },
-    {
-      label: 'Numbers',
-      options: [
-        { label: 'One', value: 'one' },
-        { label: 'Two', value: 'two' },
-        { label: 'Three', value: 'three' },
-        { label: 'Four', value: 'four' },
-      ],
-    },
+    { label: 'React', value: 'React' },
+    { label: 'Next', value: 'Next' },
+    { label: 'Gatsby', value: 'Gatsby' },
+    { label: 'Vite', value: 'Vite' },
+    { label: 'Remix', value: 'Remix' },
   ];
-
-  useLayoutEffect(() => {
-    let demo = document.querySelector('.demo');
-    let scrollWidth = demo?.scrollWidth;
-    let clientWidth = document.body.clientWidth;
-    if (!!scrollWidth && clientWidth < 550) {
-      demo?.scrollTo(scrollWidth / 2 / 2, 0);
-    }
-  }, []);
 
   return (
     <div className='demo--container'>
       <div className='demo'>
         <div className='demo--col'>
           <div className='demo--row'>
+            <div className='demo--element demo--radio-group'>
+              <div className='demo--radio'>
+                <Radio
+                  label='HTML'
+                  value='HTML'
+                  name='choices'
+                  onChange={() => setRadio('HTML')}
+                  checked={radio === 'HTML' ? true : false}
+                />
+              </div>
+              <div className='demo--radio'>
+                <Radio
+                  label='CSS'
+                  value='CSS'
+                  name='choices'
+                  onChange={() => setRadio('CSS')}
+                  checked={radio === 'CSS' ? true : false}
+                />
+              </div>
+              <div className='demo--radio'>
+                <Radio
+                  label='JavaScript'
+                  value='JavaScript'
+                  name='choices'
+                  onChange={() => setRadio('JavaScript')}
+                  checked={radio === 'JavaScript' ? true : false}
+                />
+              </div>
+              <div className='demo--radio'>
+                <Radio
+                  label='TypeScript'
+                  value='TypeScript'
+                  name='choices'
+                  onChange={() => setRadio('TypeScript')}
+                  checked={radio === 'TypeScript' ? true : false}
+                />
+              </div>
+            </div>
             <div className='demo--element demo--popover'>
               <div className='popover popover--fake' data-popper-placement='bottom' data-show=''>
                 <div id='popover-children' data-show=''>
                   <div className='popover--content'>
-                    <p>Are you sure you want to delete the thing?</p>
+                    <p>Are you sure you want to delete user?</p>
                     <Button
                       intent='danger'
                       style={{ marginBottom: '5px' }}
@@ -157,37 +172,24 @@ function Demo() {
                 </div>
               </div>
               <Button id='foo' onClick={() => navigate('/docs/popover')}>
-                Delete the thing
+                Delete user
               </Button>
             </div>
-            <div className='demo--element demo--radio-group'>
-              <div className='demo--radio'>
-                <Radio
-                  label='Good'
-                  value='Good'
-                  name='choices'
-                  onChange={() => setRadio('Good')}
-                  checked={radio === 'Good' ? true : false}
-                />
-              </div>
-              <div className='demo--radio'>
-                <Radio
-                  label='Better'
-                  value='Better'
-                  name='choices'
-                  onChange={() => setRadio('Better')}
-                  checked={radio === 'Better' ? true : false}
-                />
-              </div>
-              <div className='demo--radio'>
-                <Radio
-                  label='Best'
-                  value='Best'
-                  name='choices'
-                  onChange={() => setRadio('Best')}
-                  checked={radio === 'Best' ? true : false}
-                />
-              </div>
+          </div>
+          <div className='demo--row'>
+            <Tooltip
+              selector='#bar'
+              content={<span>{`Not immediately obvious`}</span>}
+              placement={'bottom'}
+            />
+            <div className='demo--element'>
+              <p style={{ fontWeight: '500' }}>
+                {`Use a tooltip for `}
+                <span id='bar' style={{ borderBottom: '1px dashed', cursor: 'help' }}>
+                  subtle
+                </span>
+                {' explanations and tips.'}
+              </p>
             </div>
           </div>
           <div className='demo--row'>
@@ -197,7 +199,7 @@ function Demo() {
                 leftIcon={<Icon icon='style' />}
                 onClick={() => navigate('/docs/button')}
               >
-                Success
+                Complete
               </Button>
             </div>
             <div className='demo--element demo--select'>
@@ -207,22 +209,6 @@ function Demo() {
                 options={exampleOptionsGroup}
                 onChange={(e) => setValue(e.target.value)}
               />
-            </div>
-          </div>
-          <div className='demo--row'>
-            <Tooltip
-              selector='#bar'
-              content={<span>{`Super helpful 🥹`}</span>}
-              placement={'bottom'}
-            />
-            <div className='demo--element'>
-              <p style={{ fontWeight: '500' }}>
-                {`Tooltips are `}
-                <span id='bar' style={{ borderBottom: '1px dashed', cursor: 'help' }}>
-                  helpful
-                </span>
-                {' and informative.'}
-              </p>
             </div>
           </div>
         </div>
@@ -262,12 +248,10 @@ function Demo() {
           </div>
           <div className='demo--row'>
             <Card className='demo--card' interactive>
-              <h3 style={{ fontSize: '18px', padding: 0 }}>Analytical applications</h3>
-              <p style={{ padding: '10px 0 13px 0' }}>
-                Good user interfaces that enable people to interact smoothly with data.
-              </p>
+              <h3>Design</h3>
+              <p>Styles come and go. Good design is a language, not a style.</p>
               <Button intent='warning' onClick={() => navigate('/docs')}>
-                Explore components
+                Explore
               </Button>
             </Card>
           </div>

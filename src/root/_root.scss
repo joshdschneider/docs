@@ -492,7 +492,7 @@ $demo-break: 1000px;
   }
 
   @media only screen and (max-width: $demo-break) {
-    padding: 1.5em;
+    padding: 1.5em 1em;
   }
 
   .demo--col {
@@ -501,7 +501,7 @@ $demo-break: 1000px;
 
     &:first-child {
       .demo--row {
-        justify-content: flex-end;
+        justify-content: center;
 
         @media only screen and (max-width: $demo-break) {
           justify-content: flex-start;
@@ -531,7 +531,7 @@ $demo-break: 1000px;
       .demo--popover {
         display: block;
         position: relative;
-        padding: 25px 75px 155px 75px;
+        padding: 25px 65px 155px 65px;
 
         .popover--fake {
           position: absolute;
@@ -545,7 +545,7 @@ $demo-break: 1000px;
           #arrow {
             position: absolute;
             left: 0px;
-            transform: translate3d(123.5px, 0px, 0px);
+            transform: translate3d(101px, 0px, 0px);
           }
 
           .popover--content {
@@ -567,6 +567,16 @@ $demo-break: 1000px;
           width: 317px;
           margin: 15px;
         }
+
+        h3 {
+          font-size: 18px;
+          padding: 0px;
+        }
+
+        p {
+          padding: 10px 0px 15px;
+          font-weight: 500;
+        }
       }
 
       .demo--radio-group {
@@ -574,12 +584,12 @@ $demo-break: 1000px;
         text-align: left;
 
         .demo--radio {
-          padding: 10px;
+          padding: 10px 0;
         }
       }
 
       .demo--select {
-        width: 240px;
+        width: 100%;
       }
     }
   }
@@ -590,6 +600,7 @@ $demo-break: 1000px;
   justify-content: center;
   align-items: center;
   padding-bottom: 10px;
+  cursor: pointer;
 
   button {
     display: flex;
@@ -602,11 +613,13 @@ $demo-break: 1000px;
     border: none;
     padding: 0;
     margin: 0;
+    cursor: pointer;
   }
 
   .demo--switch {
     padding-left: 30px;
     margin: 15px;
+    cursor: pointer;
   }
 }
 
