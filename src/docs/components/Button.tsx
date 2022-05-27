@@ -143,8 +143,8 @@ function ButtonDocs() {
               intent={intent}
               minimal={minimal}
               size={size}
-              leftIcon={leftIcon ? <Icon icon='style' /> : null}
-              rightIcon={rightIcon ? <Icon icon='style' /> : null}
+              leftIcon={leftIcon ? <Icon icon='airplane' /> : null}
+              rightIcon={rightIcon ? <Icon icon='arrow-right' /> : null}
             >
               Hello World
             </Button>

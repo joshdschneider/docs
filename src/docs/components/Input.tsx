@@ -150,8 +150,8 @@ function InputDocs() {
               value={value}
               readonly={readOnly}
               onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-              leftIcon={leftIcon ? <Icon icon='style' /> : null}
-              rightIcon={rightIcon ? <Icon icon='style' /> : null}
+              leftIcon={leftIcon ? <Icon icon='search' /> : null}
+              rightIcon={rightIcon ? <Icon icon='calendar' /> : null}
               id={'demo_input'}
             />
           </Example>

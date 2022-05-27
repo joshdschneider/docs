@@ -27,7 +27,7 @@ function CalloutDocs() {
     `  return (`,
     `    <Callout`,
     `      intent='primary'`,
-    `      icon='style'`,
+    `      icon='info-sign'`,
     `      title='Important content'`,
     `    >`,
     `       The component is a simple wrapper around your content provides`,
@@ -94,7 +94,7 @@ function CalloutDocs() {
           <Example style={{ padding: '20px' }}>
             <Callout
               title={showTitle ? 'Important content' : undefined}
-              icon={showIcon ? 'style' : undefined}
+              icon={showIcon ? 'info-sign' : undefined}
               intent={intent}
             >
               <p style={{ padding: 0, fontWeight: 500, lineHeight: '1.6' }}>

@@ -42,7 +42,7 @@ function Hero() {
       <h1>Ship faster with Formation</h1>
       <p>20+ customizable components for your front-end app. Free and open-source.</p>
       <div className='hero--buttons'>
-        <Button intent='primary' leftIcon={<Icon icon='style' />} onClick={() => navigate('/docs')}>
+        <Button intent='primary' leftIcon={<Icon icon='code' />} onClick={() => navigate('/docs')}>
           Read the docs
         </Button>
         <a
@@ -86,11 +86,11 @@ function ThemeToggle({ toggleTheme }: HomeProps) {
   return (
     <div className='theme-toggle'>
       <button onClick={() => toggleLight()}>
-        <Icon icon='style' />
+        <Icon icon='flash' />
       </button>
       <Switch checked={checked} onChange={handleChange} className='demo--switch' />
       <button onClick={() => toggleDark()}>
-        <Icon icon='style' />
+        <Icon icon='moon' className='icon--moon' />
       </button>
     </div>
   );
@@ -196,7 +196,7 @@ function Demo() {
             <div className='demo--element'>
               <Button
                 intent='success'
-                leftIcon={<Icon icon='style' />}
+                leftIcon={<Icon icon='tick' />}
                 onClick={() => navigate('/docs/button')}
               >
                 Complete

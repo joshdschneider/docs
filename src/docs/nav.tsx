@@ -173,19 +173,19 @@ const navButtons: NavButton[] = [
   {
     name: 'overview',
     text: 'Overview',
-    icon: 'style',
+    icon: 'home',
     links: overviewLinks,
   },
   {
     name: 'components',
     text: 'Components',
-    icon: 'add-clip',
+    icon: 'code',
     links: componentLinks,
   },
   {
     name: 'resources',
     text: 'Resources',
-    icon: 'style',
+    icon: 'help',
     links: resourcesLinks,
   },
 ];

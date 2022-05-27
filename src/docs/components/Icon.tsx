@@ -17,7 +17,7 @@ import {
 } from '@joshdschneider/formation';
 
 function IconDocs() {
-  const [icon, setIcon] = useState<string>('style');
+  const [icon, setIcon] = useState<string>('calendar');
   const [intent, setIntent] = useState<Intent>('default');
   const [size, setSize] = useState<Size>('large');
   const [query, setQuery] = useState<string>('');
@@ -38,6 +38,8 @@ function IconDocs() {
   ];
 
   const iconOptions = [
+    { label: 'Calendar', value: 'calendar' },
+    { label: 'Diagram tree', value: 'diagram-tree' },
     { label: 'Style', value: 'style' },
     { label: 'Cross', value: 'cross' },
   ];
@@ -47,7 +49,7 @@ function IconDocs() {
     ` `,
     `function App() {`,
     `  return (`,
-    `    <Icon icon='style' intent='default' size='regular' />`,
+    `    <Icon icon='calendar' intent='default' size='regular' />`,
     `  );`,
     `} `,
   ];
@@ -167,7 +169,7 @@ function IconDocs() {
           <div className='icons-container'>
             <div className='icons-search'>
               <Input
-                leftIcon={<Icon icon='style' />}
+                leftIcon={<Icon icon='search' />}
                 placeholder={'Search icons'}
                 value={query}
                 onChange={handleChange}

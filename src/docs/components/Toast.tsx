@@ -62,7 +62,7 @@ function ToastDocs() {
     `    toast({`,
     `      intent: 'success',`,
     `      text: 'Thanks for subscribing!',`,
-    `      icon: 'style',`,
+    `      icon: 'tick',`,
     `      button: {`,
     `        text: 'Undo',`,
     `        onClick: () => alert('Are you sure?'),`,
@@ -120,7 +120,7 @@ function ToastDocs() {
         return {
           buttonName: 'Move files',
           text: 'Moved 6 files.',
-          icon: 'style',
+          icon: 'add-to-folder',
           button: {
             text: 'Undo',
             onClick: () => alert('Moved 6 files back.'),
@@ -130,7 +130,7 @@ function ToastDocs() {
         return {
           buttonName: 'Log in',
           text: `Welcome! Glad you're here.`,
-          icon: 'style',
+          icon: 'log-in',
           button: {
             text: 'Info',
             onClick: () => alert('Account not real.'),
@@ -140,7 +140,7 @@ function ToastDocs() {
         return {
           buttonName: 'Create user',
           text: 'User created successfully.',
-          icon: 'style',
+          icon: 'tick',
           button: {
             text: 'Undo',
             onClick: () => alert('Are you sure?'),
@@ -150,7 +150,7 @@ function ToastDocs() {
         return {
           buttonName: 'Log out',
           text: `You've been logged out.`,
-          icon: 'style',
+          icon: 'log-out',
           button: {
             text: 'Bye',
             onClick: () => alert('Adios!'),
@@ -160,7 +160,7 @@ function ToastDocs() {
         return {
           buttonName: `Don't click`,
           text: `Seriously, don't click 👉`,
-          icon: 'style',
+          icon: 'warning-sign',
           button: {
             text: `Button`,
             onClick: () => window.open('http://youtube.com/watch?v=dQw4w9WgXcQ', '_blank'),
@@ -168,12 +168,12 @@ function ToastDocs() {
         };
       default:
         return {
-          buttonName: 'default button',
-          text: 'default button',
-          icon: 'style',
+          buttonName: 'Move files',
+          text: 'Moved 6 files.',
+          icon: 'add-to-folder',
           button: {
             text: 'Undo',
-            onClick: () => alert('default button'),
+            onClick: () => alert('Moved 6 files back.'),
           },
         };
     }

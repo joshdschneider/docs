@@ -245,7 +245,7 @@ span {
     }
 
     a {
-      text-decoration: underline;
+      border-bottom: 1.5px solid;
     }
 
     .icon {
@@ -732,4 +732,9 @@ $demo-break: 1000px;
 
 .scroll-lock {
   overflow-y: hidden;
+}
+
+.icon--moon {
+  display: block;
+  margin-top: -2px;
 }

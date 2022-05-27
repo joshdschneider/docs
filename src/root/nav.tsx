@@ -43,12 +43,16 @@ function Nav({ theme, toggleTheme }: NavProps) {
             npm
           </a>
           <button className='nav--theme' onClick={() => toggleTheme()}>
-            <Icon icon={theme === 'light' ? 'style' : 'add-clip'} size='large' />
+            {theme === 'light' ? (
+              <Icon icon='flash' />
+            ) : (
+              <Icon icon='moon' className='icon--moon' />
+            )}
           </button>
         </div>
         <div className='nav--mobile'>
           <button className='nav--mobile--button' onClick={() => setOpen(true)}>
-            <Icon icon='style' size='large' />
+            <Icon icon='menu' size='large' />
           </button>
           <MobileNav
             isOpen={isOpen}
@@ -78,7 +82,7 @@ function MobileNav({ isOpen, onClose, theme, toggleTheme }: MobileNavProps) {
     breadcrumbs = (
       <>
         <Link to={'/'}>Home</Link>
-        <Icon icon='double-caret-vertical' />
+        <Icon icon='chevron-right' />
         <span>Docs</span>
       </>
     );
@@ -89,11 +93,11 @@ function MobileNav({ isOpen, onClose, theme, toggleTheme }: MobileNavProps) {
     children = (
       <div className='nav--mobile--children'>
         <Link to={'/docs'}>
-          <Icon icon='style' />
+          <Icon icon='code' />
           <span>Docs</span>
         </Link>
         <a href='http://github.com/joshdschneider/formation' target='_blank' rel='noreferrer'>
-          <Icon icon='style' />
+          <Icon icon='git-branch' />
           <span>Github</span>
         </a>
         <a
@@ -101,7 +105,7 @@ function MobileNav({ isOpen, onClose, theme, toggleTheme }: MobileNavProps) {
           target='_blank'
           rel='noreferrer'
         >
-          <Icon icon='style' />
+          <Icon icon='box' />
           <span>npm</span>
         </a>
       </div>
@@ -136,7 +140,11 @@ function MobileNav({ isOpen, onClose, theme, toggleTheme }: MobileNavProps) {
         <span className='nav--mobile--breadcrumbs'>{breadcrumbs}</span>
         <div className='nav--mobile--buttons'>
           <button onClick={() => toggleTheme()}>
-            <Icon icon={theme === 'light' ? 'style' : 'add-clip'} size='large' />
+            {theme === 'light' ? (
+              <Icon icon='flash' />
+            ) : (
+              <Icon icon='moon' className='icon--moon' />
+            )}
           </button>
           <button onClick={onClose}>
             <Icon icon='cross' size='large' />

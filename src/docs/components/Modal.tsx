@@ -111,7 +111,7 @@ function ModalDocs() {
               focus={focus}
               closeOnEscapeKey={closeOnEscapeKey}
               closeOnOuterClick={closeOnOuterClick}
-              header={showHeader ? { text: 'Header' } : undefined}
+              header={showHeader ? { text: 'Information', icon: 'info-sign' } : undefined}
               style={{ minWidth: '250px' }}
             >
               <p style={{ textAlign: 'left' }}>Hello from the modal!</p>
