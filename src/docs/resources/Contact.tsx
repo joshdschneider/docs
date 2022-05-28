@@ -34,6 +34,10 @@ function Contact() {
         </p>
       </Section>
       <Next
+        back={{
+          to: '/docs/tooltip',
+          text: '← Tooltip',
+        }}
         next={{
           to: '/docs/troubleshooting',
           text: 'Troubleshooting →',

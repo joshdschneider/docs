@@ -135,6 +135,10 @@ function TooltipDocs() {
         <Properties properties={tooltipProps} />
       </Section>
       <Next
+        next={{
+          to: '/docs/contact',
+          text: 'Contact →',
+        }}
         back={{
           to: '/docs/toast',
           text: '← Toast',

@@ -50,6 +50,10 @@ function Typography() {
         </div>
       </Section>
       <Next
+        next={{
+          to: '/docs/button',
+          text: 'Button →',
+        }}
         back={{
           to: '/docs/colors',
           text: '← Colors',
