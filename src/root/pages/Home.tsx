@@ -11,7 +11,7 @@ import {
   Switch,
   Tooltip,
 } from '@joshdschneider/formation';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type HomeProps = {
   toggleTheme: () => void;
@@ -40,7 +40,7 @@ function Hero() {
         <div className='gradient-c' />
       </div>
       <h1>Ship faster with Formation</h1>
-      <p>20+ customizable components for your front-end app. Free and open-source.</p>
+      <p>20+ customizable components for your frontend app. Free and open-source.</p>
       <div className='hero--buttons'>
         <Button intent='primary' leftIcon={<Icon icon='code' />} onClick={() => navigate('/docs')}>
           Read the docs
@@ -97,12 +97,17 @@ function ThemeToggle({ toggleTheme }: HomeProps) {
 }
 
 function Demo() {
+  const navigate = useNavigate();
   const [radio, setRadio] = useState<string>('TypeScript');
   const [value, setValue] = useState<string>('red');
   const [on, setOn] = useState<boolean>(true);
   const [checked, setChecked] = useState<boolean>(true);
   const [files, setFiles] = useState<FileList | null>(null);
-  const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState<boolean>(() => {
+    return localStorage.getItem('formation_scrolled') === 'true';
+  });
+
+  const radioOptions = useMemo(() => ['HTML', 'CSS', 'JavaScript', 'TypeScript'], []);
 
   const exampleOptionsGroup = [
     { label: 'React', value: 'React' },
@@ -112,48 +117,73 @@ function Demo() {
     { label: 'Remix', value: 'Remix' },
   ];
 
+  useEffect(() => {
+    const simulateRadio = () => {
+      let i = radioOptions.indexOf(radio);
+      let l = radioOptions.length;
+      if (i >= 0 && i < l - 1) {
+        setRadio(radioOptions[i + 1]);
+      } else if (i === l - 1) {
+        setRadio(radioOptions[0]);
+      }
+    };
+
+    const interval = setInterval(() => {
+      simulateRadio();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [radio, radioOptions]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChecked(!checked);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [checked]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOn(!on);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [on]);
+
+  function handleScroll() {
+    if (!scrolled) {
+      let indicator = document.querySelector('.scroll-icon');
+      indicator?.setAttribute('data-scrolled', '');
+      setScrolled(true);
+      localStorage.setItem('formation_scrolled', 'true');
+    }
+  }
+
   return (
     <div className='demo--container'>
-      <div className='demo'>
+      {scrolled ? null : (
+        <div className='scroll-icon'>
+          <Icon icon='double-chevron-right' />
+        </div>
+      )}
+      <div className='demo' onScroll={handleScroll}>
         <div className='demo--col'>
           <div className='demo--row'>
             <div className='demo--element demo--radio-group'>
-              <div className='demo--radio'>
-                <Radio
-                  label='HTML'
-                  value='HTML'
-                  name='choices'
-                  onChange={() => setRadio('HTML')}
-                  checked={radio === 'HTML' ? true : false}
-                />
-              </div>
-              <div className='demo--radio'>
-                <Radio
-                  label='CSS'
-                  value='CSS'
-                  name='choices'
-                  onChange={() => setRadio('CSS')}
-                  checked={radio === 'CSS' ? true : false}
-                />
-              </div>
-              <div className='demo--radio'>
-                <Radio
-                  label='JavaScript'
-                  value='JavaScript'
-                  name='choices'
-                  onChange={() => setRadio('JavaScript')}
-                  checked={radio === 'JavaScript' ? true : false}
-                />
-              </div>
-              <div className='demo--radio'>
-                <Radio
-                  label='TypeScript'
-                  value='TypeScript'
-                  name='choices'
-                  onChange={() => setRadio('TypeScript')}
-                  checked={radio === 'TypeScript' ? true : false}
-                />
-              </div>
+              {radioOptions.map((option, i) => {
+                return (
+                  <div className='demo--radio' key={i}>
+                    <Radio
+                      label={option}
+                      value={option}
+                      name='choices'
+                      onChange={() => setRadio(option)}
+                      checked={radio === option ? true : false}
+                    />
+                  </div>
+                );
+              })}
             </div>
             <div className='demo--element demo--popover'>
               <div className='popover popover--fake' data-popper-placement='bottom' data-show=''>
@@ -178,14 +208,14 @@ function Demo() {
           </div>
           <div className='demo--row'>
             <Tooltip
-              selector='#bar'
+              selector='#subtle'
               content={<span>{`Not immediately obvious`}</span>}
               placement={'bottom'}
             />
             <div className='demo--element'>
               <p style={{ fontWeight: '500' }}>
                 {`Use a tooltip for `}
-                <span id='bar' style={{ borderBottom: '1px dashed', cursor: 'help' }}>
+                <span id='subtle' style={{ borderBottom: '1px dashed', cursor: 'help' }}>
                   subtle
                 </span>
                 {' explanations and tips.'}
@@ -275,7 +305,7 @@ function Features() {
           </div>
           <div className='feature'>
             <h5>Type safe</h5>
-            <p>Formation is written in TypeScript for maximum safety and developer productivity.</p>
+            <p>Written in TypeScript for better safety and productivity. All types are exported.</p>
           </div>
           <div className='feature'>
             <h5>Accessibility focused</h5>
