@@ -155,8 +155,8 @@ function Demo() {
     if (!scrolled) {
       let indicator = document.querySelector('.scroll-icon');
       indicator?.setAttribute('data-scrolled', '');
-      setScrolled(true);
       localStorage.setItem('formation_scrolled', 'true');
+      setTimeout(() => setScrolled(true), 1000);
     }
   }
 

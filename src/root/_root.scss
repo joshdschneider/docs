@@ -748,11 +748,13 @@ $scroll-break: 750px;
   right: 0;
   z-index: 6;
   pointer-events: none;
+  opacity: 1;
+  transition: 0.5s;
+  -webkit-transition-property: opacity;
+  -webkit-transition-duration: 0.5s;
 
   &[data-scrolled] {
-    .icon {
-      opacity: 0;
-    }
+    opacity: 0;
   }
 
   @media only screen and (min-width: $scroll-break) {
@@ -767,8 +769,6 @@ $scroll-break: 750px;
     border-radius: 50%;
     pointer-events: none;
     fill: #fff !important;
-    opacity: 1;
-    transition: 0.5s;
 
     @include themify($themes) {
       background: themed('blue-background');
