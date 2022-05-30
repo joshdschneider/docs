@@ -3,7 +3,7 @@ import Next from '../utils/Next';
 import Section from '../utils/Section';
 
 function GettingStarted() {
-  const installExample = `npm install @joshdschnneider/formation`;
+  const installExample = `npm install @joshdschneider/formation`;
 
   const importExample = [
     `import { Button } from '@joshdschnneider/formation';`,
