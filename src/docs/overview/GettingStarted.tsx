@@ -6,7 +6,7 @@ function GettingStarted() {
   const installExample = `npm install @joshdschneider/formation`;
 
   const importExample = [
-    `import { Button } from '@joshdschnneider/formation';`,
+    `import { Button } from '@joshdschneider/formation';`,
     ` `,
     `function App() {`,
     `  return <Button intent='success'>Hello World</Button>;`,
