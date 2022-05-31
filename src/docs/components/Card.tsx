@@ -29,7 +29,7 @@ function CardDocs() {
 
   const cardProps = [
     {
-      name: 'iteractive',
+      name: 'interactive',
       type: 'boolean',
       description: `Whether the card should respond to user interactions. If set to true, hovering over the card will increase the card's elevation`,
     },
