@@ -8,7 +8,7 @@ function Accessibility() {
       <Section>
         <h1>Accessibility</h1>
         <p>
-          Formation components come with accesibility features out of the box — like focus
+          Formation components come with accessibility features out of the box — like focus
           management, color contrast, and more.
         </p>
       </Section>
@@ -24,7 +24,7 @@ function Accessibility() {
         <h3>Color contrast</h3>
         <p>
           Formation's <Link to='/docs/colors'>color palette</Link> is designed to both look great{' '}
-          <i>and</i> adhere to WCAG 2.0 standards. We believe in building for everyone, incuding
+          <i>and</i> adhere to WCAG 2.0 standards. We believe in building for everyone, including 
           those who are visually impaired or experiencing any kind of colorblindness.
         </p>
       </Section>
