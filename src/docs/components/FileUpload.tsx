@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { Label, Select, Switch, FileUpload, Intent, Size } from '@joshdschneider/formation';
 import Example from '../utils/Example';
 import Highlight from '../utils/Highlight';
@@ -126,12 +126,6 @@ function FileUploadDocs() {
     },
   ];
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setDisabled(true);
-    setFiles(e.target.files);
-    setDisabled(false);
-  }
-  
   return (
     <>
       <Section>
@@ -147,7 +141,7 @@ function FileUploadDocs() {
               size={size}
               value={files ?? undefined}
               multiple={multiple}
-              onChage={handleChange}
+              onChage={(e) => setFiles(e.target.files)}
               width={'250px'}
             />
           </Example>
